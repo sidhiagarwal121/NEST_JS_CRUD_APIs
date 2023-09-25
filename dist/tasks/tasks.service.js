@@ -19,6 +19,17 @@ let TasksService = class TasksService {
     getAllTask() {
         return this.tasks;
     }
+    getTaskWithFilters(filterDto) {
+        const { status, search } = filterDto;
+        let tasks = this.getAllTask;
+        if (status) {
+            this.tasks = this.tasks.filter(task => task.status === status);
+        }
+        if (search) {
+            this.tasks = this.tasks.filter(task => task.title.includes(search) || task.description.includes(search));
+        }
+        return this.tasks;
+    }
     createTask(title, description) {
         const id = new Date().toString();
         const task = {
