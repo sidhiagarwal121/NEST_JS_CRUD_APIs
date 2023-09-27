@@ -161,7 +161,7 @@ Body:
 <ul>
   <li>URL: /tasks/:id</li>
   <li>Method: PATCH</li>
-  <li>Description:  Updates an existing task in the database.</li>
+  <li>Description:  deletes an existing task in the database.</li>
   <li> Parameters:
     <ul>
     <li>id (required): The ID of the task.</li>
