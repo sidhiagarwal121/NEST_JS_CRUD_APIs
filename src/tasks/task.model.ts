@@ -1,3 +1,4 @@
+import { IsNotEmpty } from "class-validator"
 export interface Task{
     id:string,
     title:string,

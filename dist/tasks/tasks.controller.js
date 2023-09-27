@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const tasks_service_1 = require("./tasks.service");
 const task_model_1 = require("./task.model");
 const get_tasks_filter_dto_1 = require("./dto/get-tasks-filter.dto");
+const create_task_dto_1 = require("./dto/create-task.dto");
+const task_stataus_validation_pipes_1 = require("./pipes/task-stataus-validation.pipes");
 let TasksController = class TasksController {
     constructor(taskService) {
         this.taskService = taskService;
@@ -36,8 +38,8 @@ let TasksController = class TasksController {
             return this.taskService.getAllTask();
         }
     }
-    createTask(title, description) {
-        return this.taskService.createTask(title, description);
+    createTask(createTaskDto) {
+        return this.taskService.createTask(createTaskDto);
     }
     deleteTask(id) {
         this.taskService.deleteTask(id);
@@ -73,10 +75,10 @@ __decorate([
 ], TasksController.prototype, "getTasks", null);
 __decorate([
     (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)('title')),
-    __param(1, (0, common_1.Body)('description')),
+    (0, common_1.UsePipes)(common_1.ValidationPipe),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [create_task_dto_1.CreateTaskDto]),
     __metadata("design:returntype", Object)
 ], TasksController.prototype, "createTask", null);
 __decorate([
@@ -97,10 +99,10 @@ __decorate([
 __decorate([
     (0, common_1.Patch)('/:id'),
     __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)('status')),
+    __param(1, (0, common_1.Body)('status', task_stataus_validation_pipes_1.TaskStatusvalidation)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Object)
 ], TasksController.prototype, "updateTaskStatus", null);
 exports.TasksController = TasksController = __decorate([
     (0, common_1.Controller)('tasks'),
