@@ -4,7 +4,7 @@
 <h2>Base URL</h2>
 
 ```
-http://localhost:3000/api
+http://localhost:3000/tasks
 ```
 
 <h3>Endpoints</h3>
